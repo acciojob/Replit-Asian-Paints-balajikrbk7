@@ -1,1 +1,17 @@
 /*  your css code here. If applicable */
+/*  your css code here. If applicable */
+.grid-container {
+  display: grid;
+  background-color: transparent;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: repeat(3, 50px);
+}
+
+.grid-item {
+	border: 2px solid black;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+#grid-item3 {
+	background-color:;
+}

@@ -1,24 +1,37 @@
 //your JS code here. If required.
-let blockIdInput = document.getElementById("block_id");
-let colorIdInput = document.getElementById("color_id");
-let changeButton = document.getElementById("change_button");
-let resetButton = document.getElementById("reset_button");
-let gridItems = document.querySelectorAll(".grid-item");
+const reset = document.getElementById("reset_button");
+const change = document.getElementById("change_button");
 
-// Change color of block with given ID
+reset.addEventListener("click", resetGrid);
+change.addEventListener("click", changeColor);
+
+function resetGrid() {
+  for (let i = 1; i <= 9; i++) {
+    const gridItem = document.getElementById(`${i}`);
+    gridItem.style.backgroundColor = "transparent";
+   // console.log(gridItem);
+  }
+}
+
 function changeColor() {
-	let blockId = blockIdInput.value;
-	let colorId = colorIdInput.value;
-	let block = document.getElementById(blockId);
-	block.style.backgroundColor = colorId;
-}
+  const blockId = document.getElementById("block_id");
+  const colorId = document.getElementById("colour_id");
 
-// Reset color of all blocks
-function resetColors() {
-	for (let i = 0; i < gridItems.length; i++) {
-		gridItems[i].style.backgroundColor = "transparent";
-	}
-}
+  if (!blockId.value) {
+    alert("Please enter block id");
+  }
+  if (!colorId.value) {
+    alert("Please enter colour id");
+  }
+  if (blockId.value>=9) {
+    alert("Invalid block Id");
+  }
+  
+  resetGrid();
+  console.log(blockId.value)
+  const gridItem = document.getElementById(`${blockId.value}`);
+  gridItem.style.backgroundColor = colorId.value;
 
-changeButton.addEventListener("click", changeColor);
-resetButton.addEventListener("click", resetColors);
+  blockId.value = "";
+  colorId.value = "";
+}
